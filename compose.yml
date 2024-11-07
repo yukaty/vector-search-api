@@ -22,5 +22,17 @@ services:
       - db
     command: python load_data.py
 
+  api:
+    build: ./api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/example_db
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./api:/app
+    depends_on:
+      - db
+
 volumes:
   pgdata:

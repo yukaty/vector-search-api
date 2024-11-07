@@ -93,7 +93,7 @@ def load_books_to_db():
         # Insert into database
         cur.execute(
             """
-            INSERT INTO items (name, metadata, embedding)
+            INSERT INTO items (name, item_metadata, embedding)
             VALUES (%s, %s, %s)
             """,
             (
